@@ -1,0 +1,29 @@
+4 Aether Hub
+2 Aether Meltdown
+2 Blessed Alliance
+2 Blighted Cataract
+3 Cast Out
+4 Censor
+2 Disallow
+4 Essence Scatter
+3 Fumigate
+4 Glimmer of Genius
+4 Irrigated Farmland
+9 Island
+2 Kefnet the Mindful
+5 Plains
+2 Prairie Stream
+1 Pull from Tomorrow
+2 Shielded Aether Thief
+2 Supreme Will
+3 Torrential Gearhulk
+
+Sideboard:
+3 Approach of the Second Sun
+2 Baral's Expertise
+2 Dispel
+3 Hour of Revelation
+2 Negate
+2 Oketra's Last Mercy
+1 Pull from Tomorrow
+
