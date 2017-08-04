@@ -13,19 +13,27 @@ try:
 
 	# Validate python version
 	import sys
-	if sys.version_info[0] == 2:
-		print("You are running python 2 which is not compatible with magicthegathering.io libraries. Please install the latest version of python 3 instead")
+	if sys.version_info[0] < 3:
+		print("You are running an old version of python (likely v2.X) which is not compatible with the magicthegathering.io libraries. Please install the latest version of python 3 instead")
 		raw_input("Press enter to exit") # We use raw_input instead here, normal input is dangerous to use in python 2
 		sys.exit(1)
 
-	# magicthegathering.io API, auto install using "pip install mtgsdk" when in path C:\Python3\Scripts, requires python 3
+	# magicthegathering.io API,
 	#   docs: https://github.com/MagicTheGathering/mtg-sdk-python
 	try:
 		from mtgsdk import *
 	except ImportError:
-		print("You have not installed the magicthegathering.io library, see README file for installation instructions")
-		input("Press enter to exit")
-		sys.exit(2)
+		try:
+			# Try to install it via package manager
+			print("Unable to find magicthegathering.io, it will be installed automatically")
+			import pip
+			pip.main(['install', "mtgsdk"])
+			from mtgsdk import *
+		except ImportError:
+			#  install using "pip install mtgsdk" when in path C:\Python3\Scripts
+			print("Unable to find the magicthegathering.io SDK and automatic installation failed, please install them manually by running 'pip install mtgsdk' in your python scripts folder")
+			input("Press enter to exit")
+			sys.exit(2)
 
 	# http calls to whatsinstandard.com API (V4)
 	#   no docs available
