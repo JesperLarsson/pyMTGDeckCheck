@@ -1,6 +1,8 @@
 # pyMTGDeckCheck
 Imports a MTG deck list file and notifies you when each of your cards will rotate out of standard and verifies that your deck is standard legal. It should automatically support reprints and generally be pretty reliable.
+
 If you have basic programming knowledge there is a configuration parameter that allows you to verify your deck against other formats (Modern/Legacy etc). You are free to change and distribute the source according to the GPL license.
+
 Interfaces with magicthegathering.io and whatsinstandard.com to retrieve card data automatically without relying on a local database.
 
 # Instructions #
