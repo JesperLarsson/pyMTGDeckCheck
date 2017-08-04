@@ -8,61 +8,81 @@ Interfaces with magicthegathering.io and whatsinstandard.com to retrieve card da
 2. Download python 3 from here (note that python 2.X is not supported by magicthegathering.io SDK so it will not work): 
 https://www.python.org/downloads
 3. Export your deck from MTGO, tappedout.net or any other common tool. Choose a basic text file as the file format
-4. Run the script by drag-and-dropping your deck file on top of the script. A basic test deck file is included in the repository for you to test the script. It's also possible to run it from the commandline if you prefer.
+4. Run the script by drag-and-dropping your deck file on top of the script. A few deck files are included in the repository for you to test the script. It's also possible to run it from the commandline if you prefer.
 
-The program output should then look like this:
+The program output should then look something like this:
 
 <pre>
-=== 75 CARDS TOTAL IMPORTED ===
+=== 77 CARDS TOTAL IMPORTED ===
 Aether Hub
-Aether Meltdown
-Blessed Alliance
-Blighted Cataract
-Cast Out
-Censor
-Disallow
-Essence Scatter
-Fumigate
-Glimmer of Genius
-Irrigated Farmland
-Kefnet the Mindful
-Prairie Stream
-Pull from Tomorrow
-Shielded Aether Thief
-Supreme Will
-Torrential Gearhulk
-Approach of the Second Sun
-Baral's Expertise
-Dispel
-Hour of Revelation
-Negate
-Oketra's Last Mercy
+Attune with Aether
+Blossoming Defense
+Bristling Hydra
+Rhonas the Indomitable
+Harnessed Lightning
+Electrostatic Pummeler
+Sage of Shaila's Claim
+Sheltered Thicket
+Invigorated Rampage
+Voltaic Brawler
+Game Trail
+Servant of the Conduit
+Built to Smash
+Glorybringer
+Appetite for the Unnatural
+Deadlock Trap
+Woodcutter's Grit
+Brute Strength
+Magma Spray
+Lathnu Hellion
+Prowling Serpopard
 
-These cards rotate on Q4 2018:
-        Aether Hub
-        Aether Meltdown
-        Cast Out
-        Censor
-        Disallow
-        Essence Scatter
-        Fumigate
-        Glimmer of Genius
-        Irrigated Farmland
-        Kefnet the Mindful
-        Pull from Tomorrow
-        Shielded Aether Thief
-        Supreme Will
-        Torrential Gearhulk
-        Approach of the Second Sun
-        Baral's Expertise
-        Hour of Revelation
-        Negate
-        Oketra's Last Mercy
-These cards rotate on 2017-09-29T00:00:00.000Z:
-        Blessed Alliance
-        Blighted Cataract
-        Prairie Stream
-        Dispel
+These cards rotate Q4 2018:
+  Aether Hub
+  Attune with Aether
+  Blossoming Defense
+  Bristling Hydra
+  Rhonas the Indomitable
+  Harnessed Lightning
+  Electrostatic Pummeler
+  Sage of Shaila's Claim
+  Sheltered Thicket
+  Invigorated Rampage
+  Voltaic Brawler
+  Servant of the Conduit
+  Built to Smash
+  Glorybringer
+  Appetite for the Unnatural
+  Deadlock Trap
+  Brute Strength
+  Magma Spray
+  Lathnu Hellion
+  Prowling Serpopard
+These cards rotate 2017-09-29:
+  Game Trail
+  Woodcutter's Grit
+Your deck seems to be valid
+
+Press enter to exit
+</pre>
+
+Here is an example of an invalid deck and the errors
+<pre>
+Too many copies of 'Black lotus' (42), only 4 copies are allowed
+=== 45 CARDS TOTAL IMPORTED ===
+Too few cards in total (45)
+Censor
+Void Shatter
+Black Lotus
+   Not Standard legal!
+Doubling Season
+   Not Standard legal!
+
+These cards rotate Q4 2018:
+  Censor
+These cards rotate 2017-09-29:
+  Void Shatter
+Your deck is not valid
 </pre>
 
 # Troubleshooting #
