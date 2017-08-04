@@ -205,7 +205,6 @@ except Exception as ex:
 	print("") #NL
 	print("An error has occurred. Details:")
 	print(ex)
-	raise ex
 
 	input("Press enter to exit")
 	sys.exit(5)
