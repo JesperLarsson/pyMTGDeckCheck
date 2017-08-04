@@ -1,12 +1,14 @@
 # pyMTGDeckCheck
-Imports a standard formatted MTG deck list and notifies you when each of your cards will rotate out of standard and if your deck is standard legal. If you have basic programming knowledge there is a configuration parameter that allows you to verify your deck against other formats (Modern/Legacy etc).
-Retrieves card data from magicthegathering.io and whatsinstandard.com
+Imports a MTG deck list file and notifies you when each of your cards will rotate out of standard and verifies that your deck is standard legal. It should automatically support reprints and generally be pretty reliable.
+If you have basic programming knowledge there is a configuration parameter that allows you to verify your deck against other formats (Modern/Legacy etc). You are free to change and distribute the source according to the GPL license.
+Interfaces with magicthegathering.io and whatsinstandard.com to retrieve card data automatically without relying on a local database.
 
 # Instructions #
-1. Download python 3 from here: https://www.python.org/downloads/
-2. Install magicthegathering.io library by opening a terminal in your python script folder (ex 'C:\Python3\Scripts') and running "pip install mtgsdk". You might have to add python to your PATH system variable if the installer didn't
-3. Export your deck from MTGO / tappedout.net /etc. Choose a basic text file as the format
-4. Run the script from the commandline and give your filename as the first argument like so: "pyMTGDeckCheck.py test_deck.txt". It's also possible to run the script by drag-and-dropping your textfile on the script. A basic test deck file is included in the repository for you to test the script
+1. Download this repository from Github. Cllick "Clone or download" => "Download ZIP" or use a git client
+2. Download python 3 from here: https://www.python.org/downloads/
+3. Install magicthegathering.io library by opening a terminal in your python script folder (ex 'C:\Python3\Scripts') and running "pip install mtgsdk". You might have to add python to your PATH system variable if the installer didn't
+4. Export your deck from MTGO / tappedout.net /etc. Choose a basic text file as the format
+5. Run the script from the commandline and give your filename as the first argument like so: "pyMTGDeckCheck.py test_deck.txt". It's also possible to run the script by drag-and-dropping your textfile on the script, but it will make it harder to read the output. A basic test deck file is included in the repository for you to test the script
 
 The program output should then look like this:
 
