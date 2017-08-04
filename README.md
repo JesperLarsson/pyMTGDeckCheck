@@ -8,8 +8,7 @@ Interfaces with magicthegathering.io and whatsinstandard.com to retrieve card da
 2. Download python 3 from here (note that python 2 does not work as magicthegathering.io requires version 3 or greater): 
 https://www.python.org/downloads
 3. Export your deck from MTGO / tappedout.net /etc. Choose a basic text file as the file format
-4. Run the script by drag-and-dropping your deck file on top of the script. A basic test deck file is included in the repository for you to test the script.
-It's also possible to run it from the commandline and give your filename as the first argument like so: <pre>"pyMTGDeckCheck.py test_deck.txt"</pre> 
+4. Run the script by drag-and-dropping your deck file on top of the script. A basic test deck file is included in the repository for you to test the script. It's also possible to run it from the commandline if you prefer.
 
 The program output should then look like this:
 
