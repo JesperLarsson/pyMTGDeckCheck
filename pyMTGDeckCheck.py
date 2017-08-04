@@ -105,7 +105,6 @@ for card in cards:
 				if (legalDict["legality"] == "Legal"):
 					isLegal = True
 				break
-		# NOTE: do not break here if(isLegal) we want the last possible cardmatch in cardIter after this
 
 	# print results
 	print(cardMatchObj.name)
