@@ -41,7 +41,7 @@ def findRoationInfo(setCodes):
 			if setInfo["code"] == compareSetCode:
 				return setInfo
 
-	print("\tSANITY CHECK FAILED: Unable to find set " + setCode)
+	print("\tSANITY CHECK FAILED: Unable to find set " + setCodes)
 	return None
 
 #
