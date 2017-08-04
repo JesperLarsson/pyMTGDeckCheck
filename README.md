@@ -7,7 +7,8 @@ If you have basic programming knowledge there is a configuration parameter that 
 
 # Instructions #
 1. Download this repository from Github. Cllick "Clone or download" => "Download ZIP" or use a git client
-2. Download python 3 from here: https://www.python.org/downloads/
+2. Download python 3 from here (note that python 2 does not work as magicthegathering.io requires version 3 or greater): 
+https://www.python.org/downloads
 3. Install magicthegathering.io library by opening a terminal in your python script folder (ex 'C:\Python3\Scripts') and running "pip install mtgsdk". You might have to add python to your PATH system variable if the installer didn't
 4. Export your deck from MTGO / tappedout.net /etc. Choose a basic text file as the file format
 5. Run the script from the commandline and give your filename as the first argument like so: "pyMTGDeckCheck.py test_deck.txt". It's also possible to run the script by drag-and-dropping your textfile on the script, but it will make it harder to read the output. A basic test deck file is included in the repository for you to test the script
