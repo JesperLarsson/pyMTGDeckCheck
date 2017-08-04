@@ -10,6 +10,7 @@ Check out the README file for instructions!
 try:
 	# MTG format to validate against
 	validationFormat = "Standard"
+	cardCountMin = 60 # Set too 100 for commander
 
 	# Validate python version
 	import sys
@@ -50,6 +51,7 @@ try:
 		sys.exit(3)
 
 	inputFilename = sys.argv[1]
+	deckIsValid = True # Entire deck is valid or not
 
 	# calls whatsinstandard.com API to get all set rotation info
 	jsonSetRotations = json.loads(urllib.request.urlopen(whatsinstandardAPIUrl).read())
@@ -60,7 +62,7 @@ try:
 				if setInfo["code"] == compareSetCode:
 					return setInfo
 
-		print("\tSANITY CHECK FAILED: Unable to find set " + setCodes)
+		print("  SANITY CHECK FAILED: Unable to find set " + setCodes)
 		return None
 
 	#
@@ -72,13 +74,13 @@ try:
 
 	cards = []
 	totalCardCount = 0
-	for cardIter in cardlist:
-		if len(cardIter.strip()) == 0 or "Sideboard:" in cardIter or "Mainboard:" in cardIter:
+	for lineIter in cardlist:
+		if len(lineIter.strip()) == 0 or "Sideboard:" in lineIter or "Mainboard:" in lineIter:
 			continue # skip whitespace and headers
 
-		m = re.match(r"(\d+?) ?(.+)", cardIter)
+		m = re.match(r"(\d+)? ?(.+)", lineIter)
 		if (not m):
-			print("ERROR, could not parse line: " + cardIter)
+			print("ERROR, could not parse line: " + lineIter)
 			continue
 		# count prefix is optional, just in case it's a manual list
 		cardCount = 1
@@ -86,20 +88,33 @@ try:
 			cardCount = int(m.groups()[0].strip())
 		cardName = m.groups()[1].strip()
 
+		totalCardCount += cardCount
+
+		# Skip basic lands, they never rotate and we can have any amount of them
+		if (cardName == "Wastes" or cardName == "Island" or 
+			cardName == "Plains" or cardName == "Mountain" or 
+			cardName == "Swamp" or cardName == "Forest"):
+			continue
+
+		# check card count
+		if (cardCount > 4):
+			print("Too many copies of '" + cardName + "' (" + str(cardCount) + "), only 4 copies are allowed")
+			deckIsValid = False
+
+		# Save card name
 		if (not cardName in cards): # no duplicates
 			cards.append(cardName)
-		totalCardCount += cardCount
 	print("=== " + str(totalCardCount) + " CARDS TOTAL IMPORTED ===")
+
+	if (totalCardCount < cardCountMin):
+		print("Too few cards in total (" + str(totalCardCount) + ")")
+		deckIsValid = False
 
 	#
 	# look up cards on magicthegathering.io
 	#
 	cardRotations = {}
 	for card in cards:
-		# Skip basic lands, they never rotate
-		if (card == "Wastes" or card == "Island" or card == "Plains" or card == "Mountain" or card == "Swamp" or card == "Forest"):
-			continue
-
 		query = Card.where(name="\"" + card + "\"").all() # quotes required for exact string match
 
 		# we may get multiple hits on each name from different sets
@@ -113,8 +128,8 @@ try:
 				continue
 			cardMatchObj = cardIter # Save for later
 
-			if (cardIter.name != card):
-				print("\tSANITY CHECK FAILED: Card name missmatch for " + card)
+			if (cardIter.name.lower() != card.lower()):
+				print("  SANITY CHECK FAILED: Card name missmatch for " + card)
 				continue
 
 			# check card legality, legalities is a tuple of dictionaries
@@ -125,13 +140,21 @@ try:
 						isLegal = True
 					break
 
+		if (not cardMatchObj):
+			print("ERROR:" + str(card) + " could not be found")
+			deckIsValid = False
+			continue
+
 		# print results
 		print(cardMatchObj.name)
 		if (not formatFound):
-			print("\tSANITY CHECK FAILED: Could not find format legality definition for card " + card + " for " + validationFormat)
-			print(str(cardMatchObj.legalities))
+			# No format definition found, meaning it's not legal
+			deckIsValid = False
+			isLegal = False
+			#print(str(cardMatchObj.legalities)) # debug info
 		if (not isLegal):
-			print("\t" + " Not " + validationFormat + " legal!");
+			deckIsValid = False
+			print("  " + " Not " + validationFormat + " legal!");
 
 		# dump all fields of a card for debugging
 		#if (cardMatchObj.name == "Dispel"):
@@ -162,7 +185,15 @@ try:
 
 		print("These cards rotate " + rotation_date + ":")
 		for rotateCard in cardList:
-			print("\t" + rotateCard)
+			print("  " + rotateCard)
+
+	#
+	# Deck validity
+	#
+	if (deckIsValid):
+		print("Your deck seems to be valid")
+	else:
+		print("Your deck is not valid")
 				
 	print("")
 	input("Press enter to exit")
@@ -174,6 +205,7 @@ except Exception as ex:
 	print("") #NL
 	print("An error has occurred. Details:")
 	print(ex)
+	raise ex
 
 	input("Press enter to exit")
 	sys.exit(5)
