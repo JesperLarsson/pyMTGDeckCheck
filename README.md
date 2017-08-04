@@ -5,9 +5,9 @@ Interfaces with magicthegathering.io and whatsinstandard.com to retrieve card da
 
 # Instructions #
 1. Download this repository from Github. Cllick "Clone or download" => "Download ZIP" or use a git client
-2. Download python 3 from here (note that python 2 does not work as magicthegathering.io requires version 3 or greater): 
+2. Download python 3 from here (note that python 2.X is not supported by magicthegathering.io SDK so it will not work): 
 https://www.python.org/downloads
-3. Export your deck from MTGO / tappedout.net /etc. Choose a basic text file as the file format
+3. Export your deck from MTGO, tappedout.net or any other common tool. Choose a basic text file as the file format
 4. Run the script by drag-and-dropping your deck file on top of the script. A basic test deck file is included in the repository for you to test the script. It's also possible to run it from the commandline if you prefer.
 
 The program output should then look like this:
