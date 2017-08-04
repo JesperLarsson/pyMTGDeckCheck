@@ -156,6 +156,7 @@ try:
 		for rotateCard in cardList:
 			print("\t" + rotateCard)
 				
+	print("")
 	input("Press enter to exit")
 	sys.exit(0)
 except KeyboardInterrupt:
