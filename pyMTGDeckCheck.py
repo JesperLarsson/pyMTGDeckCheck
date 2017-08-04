@@ -89,8 +89,8 @@ for card in cards:
 	cardMatchObj = None # save a valid card object for later
 	for cardIter in query:
 		if (cardIter.rarity == "Special"):
-			# Masterpiece series, skip them, we cant look them up on whatsinstandard.comas it doesn't support their unique set codes
-			# They all have a duplicate card with the correct set code
+			# Masterpiece series, skip them, we cant look them up on whatsinstandard.com as it doesn't support their unique set codes
+			# They all have a duplicate card with the correct set code anyway which we identify on the next loop
 			continue
 		cardMatchObj = cardIter # Save for later
 
@@ -115,10 +115,10 @@ for card in cards:
 		print("\t" + " Not " + validationFormat + " legal!");
 
 	# debug dump everything
-	#if (cardMatchObj.name == "Island"):
+	#if (cardMatchObj.name == "Dispel"):
 	#	print(str(cardMatchObj.__dict__))
 
-	# check card rotation if it's legal
+	# check card rotation if card is legal and we're checking against standard
 	if (isLegal and validationFormat == "Standard"):
 		rotationInfo = findRoationInfo(cardMatchObj.printings)
 		if (not rotationInfo):
@@ -138,11 +138,9 @@ for card in cards:
 #
 if (cardRotations != {}):
 	print("") #NL
-
 	for rotation_date in cardRotations:
 		cardList = cardRotations[rotation_date]
 		print("These cards rotate on " + rotation_date + ":")
-
 		for rotateCard in cardList:
 			print("\t" + rotateCard)
 			
