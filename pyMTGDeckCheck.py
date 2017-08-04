@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Copyright Jesper Larsson, Linköping Sweden 2017
+By: Jesper Larsson (https://github.com/JesperLarsson), Linköping Sweden 2017
+Feel free to use the code for anything, licensed under GPL.
 
-Quick and dirty script for verifying deck legality and prints when cards will rotate out of standard
+Simple script for verifying deck legality and checking for when cards will rotate out of standard
 - Supports all other MTG formats like modern and commander as well (but doesn't check rotation for eternal formats)
-- Automatically checks if there is a reprint in a newer set
+- Automatically checks if there is a reprint in a newer set for a card
 """
 
-# list of cards, exported from game or tappedout (tappedout.net/mtg-decks/control-of-the-sun-dial-v22/)
 # MTG format to validate against
 validationFormat = "Standard"
 
