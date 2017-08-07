@@ -10,7 +10,7 @@ Check out the README file for instructions!
 try:
 	# MTG format to validate against
 	validationFormat = "Standard"
-	cardCountMin = 60 # Set too 100 for commander
+	cardCountMin = 60 # Set to 100 for commander
 
 	# Validate python version
 	import sys
